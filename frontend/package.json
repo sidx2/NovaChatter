@@ -3,7 +3,7 @@
     "private": true,
     "version": "0.0.0",
     "type": "module",
-    "homepage": "https://sidx2.github.io/NovaChatter",
+    "homepage": "https://sidx2.github.io/NovaChatter/frontend",
     "scripts": {
         "deploy": "gh-pages -d build",
         "dev": "vite",
