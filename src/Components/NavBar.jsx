@@ -13,7 +13,8 @@ function NavBar() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary" >
       <Container fluid >
-        <Navbar.Brand onClick={() => navigate("/")} >NovaChatter</Navbar.Brand>
+        <img src="/bird.png" height="40px" alt="" />
+        <Navbar.Brand onClick={() => navigate("/")} > NovaChatter</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
