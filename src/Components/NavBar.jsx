@@ -18,7 +18,7 @@ function NavBar() {
 		navigate("/login");
 	};
 
-	// Get User's details if token is present
+	// Get User's details if token is present in localstorage
 	useEffect(() => {
 		const getUserInfo = async () => {
 			const userInfo = await axios.get(
@@ -81,7 +81,7 @@ function NavBar() {
 					)}
 
 					<Navbar.Brand
-						onClick={() => navigate("/")}
+						onClick={() => navigate(`/profile/${user?.email}`)}
 						style={{ marginLeft: "15px" }}
 					>
 						{user?.email && "@"}

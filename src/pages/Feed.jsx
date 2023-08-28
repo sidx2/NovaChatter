@@ -8,11 +8,10 @@ import axios from "axios";
 const Feed = () => {
 	const [tweet, setTweet] = useState();
 	const [tweets, setTweets] = useState([]);
-	// Context API
 	const [user, setUser] = useState();
 
 	const handlePostTweet = () => {
-		setTweets([{ name: "The Name", content: tweet, likes: 32 }, ...tweets]);
+		setTweets([{ name: "", content: tweet, likes: 32 }, ...tweets]);
 		setTweet("");
 	};
 
@@ -41,6 +40,8 @@ const Feed = () => {
 			getUserInfo();
 		}
 		fetchTweets();
+
+		// Useeffect cleanup
 		return () => {};
 	}, []);
 
@@ -75,7 +76,7 @@ const Feed = () => {
 			{tweets &&
 				tweets.map((t) => (
 					<Tweet
-						key={t.content}
+						key={t.content + t.name + t.likes}
 						props={{
 							name: t.name,
 							content: t.content,
