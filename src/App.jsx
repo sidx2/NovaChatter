@@ -15,12 +15,12 @@ function App() {
 			<Container>
 				<Routes>
 					<Route exact path="/" element={<Feed />}></Route>
-					<Route exact path="/NovaChatter" element={<Feed />}></Route>
-					<Route exact path="/login" element={<Login />}></Route>
-					<Route exact path="/signup" element={<Signup />}></Route>
+					<Route exact path="NovaChatter" element={<Feed />}></Route>
+					<Route exact path="login" element={<Login />}></Route>
+					<Route exact path="signup" element={<Signup />}></Route>
 					<Route
 						exact
-						path="/profile/:username"
+						path="profile/:username"
 						element={<Profile />}
 					></Route>
 					<Route
