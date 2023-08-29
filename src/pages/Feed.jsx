@@ -11,18 +11,30 @@ const Feed = () => {
 	const [user, setUser] = useState();
 
 	const handlePostTweet = async () => {
-		const sentTweet = await axios.post("http://localhost:8000/api/tweets/", {
-			username: user?.email,
-			name: user?.name,
-			content: tweet,
-			likes: 0
-		}, {
-			headers: {
-				Authorization: `Bearer ${localStorage.getItem("token")}`
+		const sentTweet = await axios.post(
+			"http://3.110.143.20:8004/api/tweets/",
+			{
+				username: user?.email,
+				name: user?.name,
+				content: tweet,
+				likes: 0,
+			},
+			{
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem("token")}`,
+				},
 			}
-		});
-		
-		setTweets([{ id: sentTweet?.data?.id, name: sentTweet?.data?.name, content: sentTweet?.data?.content, likes: sentTweet?.data?.likes }, ...tweets]);
+		);
+
+		setTweets([
+			{
+				id: sentTweet?.data?.id,
+				name: sentTweet?.data?.name,
+				content: sentTweet?.data?.content,
+				likes: sentTweet?.data?.likes,
+			},
+			...tweets,
+		]);
 		console.log(sentTweet);
 		setTweet("");
 	};
@@ -30,20 +42,25 @@ const Feed = () => {
 	useEffect(() => {
 		const getUserInfo = async () => {
 			const userInfo = await axios.get(
-				"http://localhost:8000/api/userinfo/", {
-				headers: {
-					Authorization: `Bearer ${localStorage.getItem("token")}`,
-				},
-			}
+				"http://3.110.143.20:8004/api/userinfo/",
+				{
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem(
+							"token"
+						)}`,
+					},
+				}
 			);
 			setUser(userInfo.data);
 		};
 
 		const fetchTweets = async () => {
-			const res = await axios.get("http://localhost:8000/api/tweets");
+			const res = await axios.get("http://3.110.143.20:8004/api/tweets");
 			console.log(res);
 			const fetchedTweets = res.data;
-			fetchedTweets.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+			fetchedTweets.sort(
+				(a, b) => new Date(b.created_at) - new Date(a.created_at)
+			);
 
 			setTweets(fetchedTweets);
 		};
@@ -54,7 +71,7 @@ const Feed = () => {
 		fetchTweets();
 
 		// Useeffect cleanup
-		return () => { };
+		return () => {};
 	}, []);
 
 	return (

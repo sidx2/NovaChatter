@@ -15,7 +15,7 @@ const Profile = () => {
 	useEffect(() => {
 		const getUserInfo = async () => {
 			const userInfo = await axios.get(
-				`http://localhost:8000/api/show/${username}`
+				`http://3.110.143.20:8004/api/show/${username}`
 			);
 			setUser(userInfo.data);
 		};

@@ -22,7 +22,7 @@ function NavBar() {
 	useEffect(() => {
 		const getUserInfo = async () => {
 			const userInfo = await axios.get(
-				"http://localhost:8000/api/userinfo/",
+				"http://3.110.143.20:8004/api/userinfo/",
 				{
 					headers: {
 						Authorization: `Bearer ${localStorage.getItem(

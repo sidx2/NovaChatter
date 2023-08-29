@@ -12,7 +12,7 @@ function Login() {
 	const handleLogin = async (e) => {
 		e.preventDefault();
 		console.log(username, password);
-		const res = await axios.post("http://localhost:8000/api/login", {
+		const res = await axios.post("http://3.110.143.20:8004/api/login", {
 			username,
 			password,
 		});
