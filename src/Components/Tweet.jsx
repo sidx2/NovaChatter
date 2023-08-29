@@ -6,7 +6,7 @@ const Tweet = (props) => {
     return (
         <div>
             <Card className="mt-3">
-                <Card.Header>{props.props.name}</Card.Header>
+                <Card.Header>{props.props.name} <small> @{props.props.username}</small></Card.Header>
                 <Card.Body>
                     <Card.Text>
                         {props.props.content}

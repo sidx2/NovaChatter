@@ -10,22 +10,31 @@ const Feed = () => {
 	const [tweets, setTweets] = useState([]);
 	const [user, setUser] = useState();
 
-	const handlePostTweet = () => {
-		setTweets([{ name: "", content: tweet, likes: 32 }, ...tweets]);
+	const handlePostTweet = async () => {
+		const sentTweet = await axios.post("http://localhost:8000/api/tweets/", {
+			username: user?.email,
+			name: user?.name,
+			content: tweet,
+			likes: 0
+		}, {
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem("token")}`
+			}
+		});
+		
+		setTweets([{ id: sentTweet?.data?.id, name: sentTweet?.data?.name, content: sentTweet?.data?.content, likes: sentTweet?.data?.likes }, ...tweets]);
+		console.log(sentTweet);
 		setTweet("");
 	};
 
 	useEffect(() => {
 		const getUserInfo = async () => {
 			const userInfo = await axios.get(
-				"http://localhost:8000/api/userinfo/",
-				{
-					headers: {
-						Authorization: `Bearer ${localStorage.getItem(
-							"token"
-						)}`,
-					},
-				}
+				"http://localhost:8000/api/userinfo/", {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem("token")}`,
+				},
+			}
 			);
 			setUser(userInfo.data);
 		};
@@ -33,7 +42,10 @@ const Feed = () => {
 		const fetchTweets = async () => {
 			const res = await axios.get("http://localhost:8000/api/tweets");
 			console.log(res);
-			setTweets(res.data);
+			const fetchedTweets = res.data;
+			fetchedTweets.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+			setTweets(fetchedTweets);
 		};
 
 		if (localStorage.getItem("token")) {
@@ -42,7 +54,7 @@ const Feed = () => {
 		fetchTweets();
 
 		// Useeffect cleanup
-		return () => {};
+		return () => { };
 	}, []);
 
 	return (
@@ -76,9 +88,10 @@ const Feed = () => {
 			{tweets &&
 				tweets.map((t) => (
 					<Tweet
-						key={t.content + t.name + t.likes}
+						key={t.id}
 						props={{
 							name: t.name,
+							username: t.username,
 							content: t.content,
 							likes: t.likes,
 						}}

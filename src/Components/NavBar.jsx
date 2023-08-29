@@ -9,7 +9,7 @@ import Navbar from "react-bootstrap/Navbar";
 
 function NavBar() {
 	const navigate = useNavigate();
-	const [searchText, setSearchText] = useState();
+	const [searchText, setSearchText] = useState("");
 	const [user, setUser] = useState();
 
 	const handleLogout = () => {

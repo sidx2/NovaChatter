@@ -27,6 +27,7 @@ const SearchResults = () => {
         {users?.map((u) => (
 
         <UserListItem 
+          key={u?.id}
           name={u?.name} 
           username={u?.email} 
           followers="4" 
