@@ -43,7 +43,7 @@ function NavBar() {
 		<Navbar expand="lg" className="bg-body-tertiary">
 			<Container fluid>
 				<img src="/bird.png" height="40px" alt="" />
-				<Navbar.Brand onClick={() => navigate("/")}>
+				<Navbar.Brand onClick={() => navigate("/NovaChatter")}>
 					{" "}
 					NovaChatter
 				</Navbar.Brand>
@@ -65,7 +65,7 @@ function NavBar() {
 						/>
 						<Button
 							variant="outline-success"
-							onClick={() => navigate(`/ search / ${ searchText }`)}
+							onClick={() => navigate(`/search/${ searchText }`)}
 						>
 							Search
 						</Button>

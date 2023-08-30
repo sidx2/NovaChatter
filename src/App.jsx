@@ -25,7 +25,7 @@ function App() {
 					></Route>
 					<Route
 						exact
-						path="/search/:searchText"
+						path="search/:searchText"
 						element={<SearchResults />}
 					></Route>
 				</Routes>
