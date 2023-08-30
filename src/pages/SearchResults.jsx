@@ -4,37 +4,40 @@ import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import UserListItem from '../Components/UserListItem';
 
 const SearchResults = () => {
-    const { searchText } = useParams();
-    const [users, setUsers] = useState();
-    const navigate = useNavigate();
+  const { searchText } = useParams();
+  const [users, setUsers] = useState();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-      const fetchUsers = async () => {
-        const res = await axios.get(`http://localhost:8000/api/search/${searchText}`);
-        console.log(res);
-        setUsers(res.data);
-      }
-    
-      fetchUsers();
-      return () => {
-        
-      }
-    }, [])
-    
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const res = await axios.get(`http://localhost:8000/api/search/${searchText}`);
+      console.log(res);
+      setUsers(res.data);
+    }
+
+    fetchUsers();
+    return () => {
+
+    }
+  }, [])
+
   return (
     <div>
-        <h3>Search results for {searchText}</h3>
-        {users?.map((u) => (
+      <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem', color: '#333' }}>
+        Search results for: <small>{searchText}</small>
+      </h3>
 
-        <UserListItem 
+      {users?.map((u) => (
+
+        <UserListItem
           key={u?.id}
-          name={u?.name} 
-          username={u?.email} 
-          followers="4" 
+          name={u?.name}
+          username={u?.email}
+          followers="4"
           following="32"
           onClick={() => Navigate(`profile/${email}`)}
         />
-        ))}
+      ))}
     </div>
   )
 }
