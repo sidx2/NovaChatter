@@ -25,9 +25,8 @@ function NavBar() {
 				"https://17f4-3-110-143-20.ngrok-free.app/api/userinfo/",
 				{
 					headers: {
-						Authorization: `Bearer ${localStorage.getItem(
-							"token"
-						)}`,
+						"ngrok-skip-browser-warning": true,
+						Authorization: `Bearer ${localStorage.getItem("token")}`,
 					},
 				}
 			);
@@ -66,7 +65,7 @@ function NavBar() {
 						/>
 						<Button
 							variant="outline-success"
-							onClick={() => navigate(`/search/${searchText}`)}
+							onClick={() => navigate(`/ search / ${ searchText }`)}
 						>
 							Search
 						</Button>
@@ -81,7 +80,7 @@ function NavBar() {
 					)}
 
 					<Navbar.Brand
-						onClick={() => navigate(`/profile/${user?.email}`)}
+						onClick={() => navigate(`/ profile / ${ user?.email }`)}
 						style={{ marginLeft: "15px" }}
 					>
 						{user?.email && "@"}

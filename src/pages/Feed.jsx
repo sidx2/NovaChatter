@@ -21,6 +21,7 @@ const Feed = () => {
 			},
 			{
 				headers: {
+					"ngrok-skip-browser-warning": true,
 					Authorization: `Bearer ${localStorage.getItem("token")}`,
 				},
 			}
@@ -45,6 +46,7 @@ const Feed = () => {
 				"https://17f4-3-110-143-20.ngrok-free.app/api/userinfo/",
 				{
 					headers: {
+						"ngrok-skip-browser-warning": true,
 						Authorization: `Bearer ${localStorage.getItem(
 							"token"
 						)}`,
@@ -56,7 +58,12 @@ const Feed = () => {
 
 		const fetchTweets = async () => {
 			const res = await axios.get(
-				"https://17f4-3-110-143-20.ngrok-free.app/api/tweets"
+				"https://17f4-3-110-143-20.ngrok-free.app/api/tweets",
+				{
+					headers: {
+					"ngrok-skip-browser-warning": true
+					}
+				}
 			);
 			console.log(res);
 			const fetchedTweets = res.data;

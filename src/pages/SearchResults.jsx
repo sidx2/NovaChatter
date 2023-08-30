@@ -10,7 +10,11 @@ const SearchResults = () => {
 
     useEffect(() => {
       const fetchUsers = async () => {
-        const res = await axios.get(`http://localhost:8000/api/search/${searchText}`);
+        const res = await axios.get(`http://localhost:8000/api/search/${searchText}`, {
+          headers: {
+            "ngrok-skip-browser-warning": true
+          }
+        });
         console.log(res);
         setUsers(res.data);
       }
@@ -38,3 +42,5 @@ const SearchResults = () => {
     </div>
   )
 }
+
+export default SearchResults;

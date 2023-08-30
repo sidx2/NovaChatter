@@ -22,6 +22,11 @@ function Signup() {
 					username,
 					password,
 					password_confirmation,
+				},
+				{
+					headers: {
+						"ngrok-skip-browser-warning": true
+					}
 				}
 			);
 			localStorage.setItem("token", res.data.token);

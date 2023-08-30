@@ -17,6 +17,11 @@ function Login() {
 			{
 				username,
 				password,
+			},
+			{
+				headers: {
+					"ngrok-skip-browser-warning": true
+				}
 			}
 		);
 		console.log("res", res);
