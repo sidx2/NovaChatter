@@ -16,7 +16,7 @@ function Signup() {
 		console.log(username, password, password_confirmation);
 		try {
 			const res = await axios.post(
-				"http://3.110.143.20:8004/api/signup",
+				"https://17f4-3-110-143-20.ngrok-free.app/api/signup",
 				{
 					name,
 					username,

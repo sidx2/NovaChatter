@@ -15,7 +15,7 @@ const Profile = () => {
 	useEffect(() => {
 		const getUserInfo = async () => {
 			const userInfo = await axios.get(
-				`http://3.110.143.20:8004/api/show/${username}`
+				`https://17f4-3-110-143-20.ngrok-free.app/api/show/${username}`
 			);
 			setUser(userInfo.data);
 		};

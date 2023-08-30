@@ -11,7 +11,7 @@ const SearchResults = () => {
 	useEffect(() => {
 		const fetchUsers = async () => {
 			const res = await axios.get(
-				`http://3.110.143.20:8004/api/search/${searchText}`
+				`https://17f4-3-110-143-20.ngrok-free.app/api/search/${searchText}`
 			);
 			console.log(res);
 			setUsers(res.data);
