@@ -15,12 +15,15 @@ function Signup() {
 		e.preventDefault();
 		console.log(username, password, password_confirmation);
 		try {
-			const res = await axios.post("http://localhost:8000/api/signup", {
-				name,
-				username,
-				password,
-				password_confirmation,
-			});
+			const res = await axios.post(
+				"https://17f4-3-110-143-20.ngrok-free.app/api/signup",
+				{
+					name,
+					username,
+					password,
+					password_confirmation,
+				}
+			);
 			localStorage.setItem("token", res.data.token);
 			console.log(res);
 			if (res.status === 201) navigate("/");

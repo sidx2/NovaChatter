@@ -12,10 +12,13 @@ function Login() {
 	const handleLogin = async (e) => {
 		e.preventDefault();
 		console.log(username, password);
-		const res = await axios.post("http://localhost:8000/api/login", {
-			username,
-			password,
-		});
+		const res = await axios.post(
+			"https://17f4-3-110-143-20.ngrok-free.app/api/login",
+			{
+				username,
+				password,
+			}
+		);
 		console.log("res", res);
 		localStorage.setItem("token", res.data.token);
 		if (res.status === 201) navigate("/");
