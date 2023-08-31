@@ -10,7 +10,7 @@ const SearchResults = () => {
 
     useEffect(() => {
       const fetchUsers = async () => {
-        const res = await axios.get(`http://localhost:8000/api/search/${searchText}`, {
+        const res = await axios.get(`https://17f4-3-110-143-20.ngrok-free.app/api/search/${searchText}`, {
           headers: {
             "ngrok-skip-browser-warning": true
           }
